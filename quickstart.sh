@@ -251,36 +251,36 @@ echo "--------------------------------------------------------------------------
 echo "====> : Analyze PostgreSQL tables"
 make psql-analyze
 
-echo " "
-echo "-------------------------------------------------------------------------------------"
-echo "====> : Bring up postserve at localhost:8090/tiles/{z}/{x}/{y}.pbf"
-docker-compose up -d postserve
+#echo " "
+#echo "-------------------------------------------------------------------------------------"
+#echo "====> : Bring up postserve at localhost:8090/tiles/{z}/{x}/{y}.pbf"
+#docker-compose up -d postserve
 
-echo " "
-echo "-------------------------------------------------------------------------------------"
-echo "====> : Start generating MBTiles (containing gzipped MVT PBF) from a TM2Source project. "
-echo "      : TM2Source project definitions : ./build/openmaptiles.tm2source/data.yml "
-echo "      : Output MBTiles: ./data/tiles.mbtiles  "
-echo "      : Source code: https://github.com/openmaptiles/generate-vectortiles "
-echo "      : We are using a lot of Mapbox Open Source tools! : https://github.com/mapbox "
-echo "      : Thank you https://www.mapbox.com !"
-echo "      : See other MVT tools : https://github.com/mapbox/awesome-vector-tiles "
-echo "      :  "
-echo "      : You will see a lot of deprecated warning in the log! This is normal!  "
-echo "      :    like :  Mapnik LOG>  ... is deprecated and will be removed in Mapnik 4.x ... "
+#echo " "
+#echo "-------------------------------------------------------------------------------------"
+#echo "====> : Start generating MBTiles (containing gzipped MVT PBF) from a TM2Source project. "
+#echo "      : TM2Source project definitions : ./build/openmaptiles.tm2source/data.yml "
+#echo "      : Output MBTiles: ./data/tiles.mbtiles  "
+#echo "      : Source code: https://github.com/openmaptiles/generate-vectortiles "
+#echo "      : We are using a lot of Mapbox Open Source tools! : https://github.com/mapbox "
+#echo "      : Thank you https://www.mapbox.com !"
+#echo "      : See other MVT tools : https://github.com/mapbox/awesome-vector-tiles "
+#echo "      :  "
+#echo "      : You will see a lot of deprecated warning in the log! This is normal!  "
+#echo "      :    like :  Mapnik LOG>  ... is deprecated and will be removed in Mapnik 4.x ... "
+#
+#docker-compose -f docker-compose.yml -f ./data/docker-compose-config.yml  run --rm generate-vectortiles
+#
+#echo " "
+#echo "-------------------------------------------------------------------------------------"
+#echo "====> : Add special metadata to mbtiles! "
+#docker-compose run --rm openmaptiles-tools  generate-metadata ./data/tiles.mbtiles
+#docker-compose run --rm openmaptiles-tools  chmod 666         ./data/tiles.mbtiles
 
-docker-compose -f docker-compose.yml -f ./data/docker-compose-config.yml  run --rm generate-vectortiles
-
-echo " "
-echo "-------------------------------------------------------------------------------------"
-echo "====> : Add special metadata to mbtiles! "
-docker-compose run --rm openmaptiles-tools  generate-metadata ./data/tiles.mbtiles
-docker-compose run --rm openmaptiles-tools  chmod 666         ./data/tiles.mbtiles
-
-echo " "
-echo "-------------------------------------------------------------------------------------"
-echo "====> : Stop PostgreSQL service ( but we keep PostgreSQL data volume for debugging )"
-docker-compose stop postgres
+#echo " "
+#echo "-------------------------------------------------------------------------------------"
+#echo "====> : Stop PostgreSQL service ( but we keep PostgreSQL data volume for debugging )"
+#docker-compose stop postgres
 
 echo " "
 echo "-------------------------------------------------------------------------------------"
@@ -290,10 +290,10 @@ md5sum build/mapping.yaml                     >> ./data/quickstart_checklist.chk
 md5sum build/tileset.sql                      >> ./data/quickstart_checklist.chk
 md5sum build/openmaptiles.tm2source/data.yml  >> ./data/quickstart_checklist.chk
 md5sum ./data/${testdata}                     >> ./data/quickstart_checklist.chk
-md5sum ./data/tiles.mbtiles                   >> ./data/quickstart_checklist.chk
-md5sum ./data/docker-compose-config.yml       >> ./data/quickstart_checklist.chk
-md5sum ./data/osmstat.txt                     >> ./data/quickstart_checklist.chk
-cat ./data/quickstart_checklist.chk
+#md5sum ./data/tiles.mbtiles                   >> ./data/quickstart_checklist.chk
+#md5sum ./data/docker-compose-config.yml       >> ./data/quickstart_checklist.chk
+#md5sum ./data/osmstat.txt                     >> ./data/quickstart_checklist.chk
+#cat ./data/quickstart_checklist.chk
 
 ENDTIME=$(date +%s)
 ENDDATE=$(date +"%Y-%m-%dT%H:%M%z")
@@ -327,7 +327,7 @@ echo "====> : (disk space) We have created the new vectortiles ( ./data/tiles.mb
 echo "      : Please respect the licenses (OdBL for OSM data) of the sources when distributing the MBTiles file."
 echo "      : Created from $testdata ( file moddate: $MODDATE ) "
 echo "      : Size: "
-ls -la ./data/*.mbtiles
+#ls -la ./data/*.mbtiles
 
 echo " "
 echo "-------------------------------------------------------------------------------------"
